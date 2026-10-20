@@ -1,14 +1,41 @@
-# Ignore everything
-*
+# ---------------------------------------------------------------- LaTeX build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.vrb
+*.xdv
+main.pdf
 
-# Except these
-!*.tex
-!*.py
-!*.ipynb
-!*.md
-!.gitignore
-!*.yaml
-!*.png
+# ---------------------------------------------------------------- Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
 
-!.python-version
-!pyproject.toml
+# ---------------------------------------------------------------- nested git repos (they have their own history)
+dingo/
+flow-matching-posterior-estimation/
+
+# ---------------------------------------------------------------- training outputs
+# model checkpoints are ~35-100 MB each (GitHub rejects files > 100 MB)
+*.pt
+*.npy
+*.hdf5
+toy_outputs/
+
+# ---------------------------------------------------------------- OS / editor
+.DS_Store
+.vscode/
