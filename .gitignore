@@ -8,6 +8,7 @@
 !*.md
 !.gitignore
 !*.yaml
+!*.png
 
 !.python-version
 !pyproject.toml
