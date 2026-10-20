@@ -1,6 +1,16 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[capitalise, nameinlink]{cleveref}
+
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
+\crefname{subsection}{Section}{Sections}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{appendix}{Appendix}{Appendices}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
 
 \title{Flow Matching for Scalable Simulation-Based Inference}
 \author{Your Name}
@@ -12,7 +22,30 @@
 
 \section{Introduction}
 
-Hello.
+\subsection{Continuous flows to flow matching}
+
+\begin{equation}
+    \label{eqn:flow_ODE}
+    \frac{d}{dt}\psi_{t,x}(\theta) = v_{t,x}(\psi_{t,x}(\theta)), \quad \psi_{0,x}(\theta) = \theta
+\end{equation}
+
+\begin{equation}
+    \label{eqn:final_density}
+q(\theta|x) = (\psi_{1,x})_* q_0(\theta) = q_0(\theta_0) \exp\left(-\int_0^1 \text{div}\, v_{t,x}(\theta_t) \, dt\right)    
+\end{equation}
+
+In~\cref{eqn:final_density} $v_{t,x}(\theta)$ can be approximated by a neural network. The issue is training the network is prohibitavely expensive.
+Starting with a sample $\theta_1$ we need to integrate the ODE~\cref{eqn:flow_ODE} numerically which involves lots of neural network evaluations. We also need to calculate the divergence of
+the network with $\theta_t$ which again must be numerically approximated. This is prohibitavely expensive. 
+
+The major improvement in flow matching is allowing use to use continuous flows but with feasible trianing. In this we use a condition vector field which therefore means that training does not involve
+integrating ODEs. 
+
+The ideal loss is 
+\begin{equation}
+    \label{eqn:ideal_loss}
+    \mathcal{L}(w) = \mathbb{E}_{t~\rho, x_t~\rho_t}[||v_t(x_t; w)- u_t(x_t)||^2]
+\end{equation}
+However $u_t(x_t)$ is intractable and the crucial finding to flow matching is
 
 \end{document}
-

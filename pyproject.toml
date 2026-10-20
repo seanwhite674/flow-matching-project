@@ -1,0 +1,18 @@
+[project]
+name = "flow-matching-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dingo-gw",
+    "sbibm>=1.1.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "dingo",
+]
+
+[tool.uv.sources]
+dingo-gw = { workspace = true, editable = true }
