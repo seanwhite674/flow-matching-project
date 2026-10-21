@@ -24,11 +24,11 @@ model:
   type: flow_matching
 task:
   name: lotka_volterra
-  num_train_samples: 10000   # test scale (paper: 1e3 / 1e4 / 1e5)
+  num_train_samples: 100000  # full run (paper: 1e3 / 1e4 / 1e5)
 training:
   batch_size: 64
   early_stopping: true
-  epochs: 10                 # test scale (template: 100)
+  epochs: 100                # full run (early stopping may end it sooner)
   num_workers: 0
   optimizer:
     lr: 0.0002
