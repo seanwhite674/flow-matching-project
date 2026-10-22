@@ -39,3 +39,6 @@ toy_outputs/
 # ---------------------------------------------------------------- OS / editor
 .DS_Store
 .vscode/
+
+# MNIST download used for slide figures
+.mnist_data/
